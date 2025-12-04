@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import connectDB from "../config/db.js";
-import Product from "../models/Product.js";
 import User from "../models/User.js";
+import { Product } from "../models/Product.js";
 
 const sampleProducts = [
   {
@@ -248,7 +248,7 @@ const importData = async () => {
     });
 
     // insert sample
-    await Product.insertMany(sampleProducts);
+    // await Product.insertMany(sampleProducts);
 
     console.log("Data Imported");
     process.exit();
