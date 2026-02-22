@@ -10,7 +10,6 @@ import orderRoutes from "./routes/orderRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
-dotenv.config();
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -18,8 +17,12 @@ const app = express();
 app.use(express.json());
 
 // CORS - dev friendly (restrict origin in production)
-app.use(cors({ origin: true, credentials: true }));
-
+app.use(
+  cors({
+    origin: ["https://your-frontend.onrender.com"],
+    credentials: true,
+  })
+);
 // connect to DB
 connectDB();
 
