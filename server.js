@@ -23,11 +23,19 @@ app.use(express.urlencoded({ extended: true }));
 /* ================= CORS (FIXED) ================= */
 app.use(
   cors({
-    origin: [
-      "https://reborne-h1o5.vercel.app/",
-      "https://reborne-gf4p.vercel.app", // ✅ your Vercel frontend
-      "http://localhost:5173",           // local dev
-    ],
+    origin: (origin, callback) => {
+      // allow server-to-server / Postman
+      if (!origin) return callback(null, true);
+
+      if (
+        origin.includes("vercel.app") ||
+        origin === "http://localhost:5173"
+      ) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("CORS not allowed"), false);
+    },
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
