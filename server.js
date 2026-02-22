@@ -11,6 +11,8 @@ import orderRoutes from "./routes/orderRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
+
+console.log("🔥 CORS FIX VERSION DEPLOYED");
 const PORT = process.env.PORT || 5000;
 const app = express();
 
