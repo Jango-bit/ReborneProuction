@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: [
+      "https://reborne-h1o5.vercel.app/",
       "https://reborne-gf4p.vercel.app", // ✅ your Vercel frontend
       "http://localhost:5173",           // local dev
     ],
